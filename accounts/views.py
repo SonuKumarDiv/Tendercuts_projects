@@ -85,4 +85,4 @@ class get_all_user_api(APIView):
                     'error_msg':'',
                     'errors':{},
                     'response':{'All_users_Details':serializers.get_all_users(S_T,many=True).data},
-                    },status=status.HTTP_202_ACCEPTED)# 
+                    },status=status.HTTP_202_ACCEPTED)
