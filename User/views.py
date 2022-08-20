@@ -33,18 +33,18 @@ class add_orders_api(APIView):
 class Update_order_api(APIView):
     def get(self,request,id):
         try:
-            S_T=list(models.order_detail.objects.get(id=id))
+            S_T=list(models.order_detail.objects.filter(id=id))
             if S_T==[]:
                 return Response({'success':'false',
                                     'error_msg':'Id does not exist',
                                     'errors':{},
                                     'response':{},
                                     },status=status.HTTP_400_BAD_REQUEST)
-        
+            S_T=S_T[0]
             return Response({'success':'true',
                         'error_msg':'',
                         'errors':{},
-                        'response':{'Orders_Details':serializers.update_orderd_forms(S_T,many=True).data},
+                        'response':{'Orders_Details':serializers.update_orderd_forms(S_T).data},
                         },status=status.HTTP_202_ACCEPTED)
 
         except Exception as e:
@@ -61,7 +61,7 @@ class Update_order_api(APIView):
                                     'response':{},
                                     },status=status.HTTP_400_BAD_REQUEST)
             ORD=ORD[0]
-            f1=serializers.update_orderd_forms(data=request.POST,instance=ORD)
+            f1=serializers.orders_forms(data=request.POST,instance=ORD)
             if f1.is_valid():   
                 f1.save()
                 return Response({'success':'true',
@@ -146,14 +146,14 @@ class pul_all_order_of_a_store(APIView):
     def post(self, request):
         try:
             use_r=list(models.order_detail.objects.filter(stores=request.POST['Store_data_id']))
-        
+            print(use_r)
             if use_r==[]:
                 return Response({'success':'false',
                         'error_msg':"Store_data_id not exist",
                         'errors':{},
                         'response':{}
                         },status=status.HTTP_400_BAD_REQUEST) 
-            
+            #use_r=use_r[0]
             return Response({'success':'true',
                         'error_msg':'',
                         'errors':{},

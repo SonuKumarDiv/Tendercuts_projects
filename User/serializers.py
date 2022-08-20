@@ -14,7 +14,7 @@ class orders_forms(serializers.ModelSerializer):
     class Meta():
         model=models.order_detail
         fields=('order_name','item_price','total_amount','order_status','address','Order_booked_by','stores')
-        depth=1
+        #depth=1
         #exclude=('Order_booked_by','stores')      
 # class update_orderd_forms(serializers.ModelSerializer):
 #     class Meta():
@@ -24,5 +24,5 @@ class orders_forms(serializers.ModelSerializer):
 class update_orderd_forms(serializers.ModelSerializer):
     class Meta():
         model=models.order_detail
-        fields=('id','order_name','item_price','total_amount','order_status','address','Order_booked_by','stores')
+        fields=('id','order_name','item_price','quantity','total_amount','order_status','address','Order_booked_by','stores')
         depth=1
