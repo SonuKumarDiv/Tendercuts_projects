@@ -43,7 +43,7 @@ class Update_order_api(APIView):
             S_T=list(models.order_detail.objects.filter(id=id))
             if S_T==[]:
                 return Response({'success':'false',
-                                    'error_msg':'Id does not exist',
+                                    'error_msg':'Id does not exist .Please try to other id',
                                     'errors':{},
                                     'response':{},
                                     },status=status.HTTP_400_BAD_REQUEST)
@@ -63,7 +63,7 @@ class Update_order_api(APIView):
         
             if ORD==[]:
                 return Response({'success':'false',
-                                    'error_msg':'Id does not exist',
+                                    'error_msg':'this Id does not exist in DB  please try to other id',
                                     'errors':{},
                                     'response':{},
                                     },status=status.HTTP_400_BAD_REQUEST)
@@ -109,7 +109,7 @@ class add_stores_api(APIView):
                                 },status=status.HTTP_202_ACCEPTED)
         else:
             return Response({'success':'false',
-                                    'error_msg':'get worng input or user id does not exist',
+                                    'error_msg':'get worng input or user id does not exist User does not exist  please try to other id',
                                     'errors':'',
                                     'response':{},
                                     },status=status.HTTP_400_BAD_REQUEST) 
@@ -122,7 +122,7 @@ class status_change_api(APIView):
         ord=list(models.order_detail.objects.filter(id=id))
         if ord==[]:
             return Response({'success':'false',
-                                'error_msg':'invalid id',
+                                'error_msg':'Order objects does not exist  please try to other id',
                                 'errors':{},
                                 'response':{},
                                 },status=status.HTTP_400_BAD_REQUEST)
@@ -143,7 +143,7 @@ class pull_all_order_of_a_user(APIView):
             user=list(models.order_detail.objects.filter(Order_booked_by=request.POST['User_id']))
             if user==[]:
                 return Response({'success':'false',
-                        'error_msg':"User does not exist",
+                        'error_msg':"User does not exist  please try to other id",
                         'errors':{},
                         'response':{}
                         },status=status.HTTP_400_BAD_REQUEST) 
@@ -167,7 +167,7 @@ class pul_all_order_of_a_store(APIView):
             print(use_r)
             if use_r==[]:
                 return Response({'success':'false',
-                        'error_msg':"Store_data_id does not exist",
+                        'error_msg':"Store_data_id does not exist please try to other id",
                         'errors':{},
                         'response':{}
                         },status=status.HTTP_400_BAD_REQUEST) 

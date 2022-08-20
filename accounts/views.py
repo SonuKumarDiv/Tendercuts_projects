@@ -84,5 +84,5 @@ class get_all_user_api(APIView):
         return Response({'success':'true',
                     'error_msg':'',
                     'errors':{},
-                    'response':{'Stores_Details':serializers.get_all_users(S_T,many=True).data},
+                    'response':{'All_users_Details':serializers.get_all_users(S_T,many=True).data},
                     },status=status.HTTP_202_ACCEPTED)# 
