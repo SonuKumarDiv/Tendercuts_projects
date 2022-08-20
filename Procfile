@@ -1,1 +1,1 @@
-web: gunicorn remog.wsgi
+web: gunicorn tender.wsgi
