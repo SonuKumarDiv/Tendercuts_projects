@@ -8,6 +8,8 @@ import secrets
 import bcrypt
 
 
+######### Add (signup)  Users api  ######### 
+
 class signup__api(APIView):
     def get(self,request):
         f0=serializers.password()
@@ -73,6 +75,8 @@ class signup__api(APIView):
                                 'errors':'',
                                 'response':{},
                                 },status=status.HTTP_400_BAD_REQUEST)
+
+######### get all users Api   ######### 
 
 class get_all_user_api(APIView):
     def get(self,request):

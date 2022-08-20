@@ -5,6 +5,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+
+######### Add  Oreder Api   and Get All  order api  #########
+
+
 class add_orders_api(APIView):
     def get(self,request):
         S_T=list(models.order_detail.objects.all())
@@ -28,7 +32,10 @@ class add_orders_api(APIView):
                                     'error_msg':'',
                                     'errors':'',
                                     'response':{},
-                                    },status=status.HTTP_400_BAD_REQUEST)    
+                                    },status=status.HTTP_400_BAD_REQUEST) 
+
+
+######### Edit(update) Oreder Api   and Get id wise  order api  #########   
 
 class Update_order_api(APIView):
     def get(self,request,id):
@@ -78,6 +85,10 @@ class Update_order_api(APIView):
         except Exception as e:
             return Response({'require':str(e)},status=status.HTTP_400_BAD_REQUEST)
 
+
+######### Add Store Api   and Get all order api  ######### 
+
+
 class add_stores_api(APIView):
     def get(self,request):
         S_T=list(models.store_detail.objects.all())
@@ -103,6 +114,8 @@ class add_stores_api(APIView):
                                     'response':{},
                                     },status=status.HTTP_400_BAD_REQUEST) 
 
+######### Edit(update) order status Api   and Get status api  ######### 
+
 class status_change_api(APIView):
     
     def get(self,request,id):
@@ -121,6 +134,8 @@ class status_change_api(APIView):
                     'errors':{},
                     'response':serializers.update_orderd_forms(ord).data,
                     },status=status.HTTP_202_ACCEPTED)#
+
+######### Pull all Oreder from a user Api   ######### 
 
 class pull_all_order_of_a_user(APIView):
     def post(self, request):
@@ -141,6 +156,9 @@ class pull_all_order_of_a_user(APIView):
 
         except Exception as e:
             return Response({'require':str(e)},status=status.HTTP_400_BAD_REQUEST)
+
+
+######### Pull all Oreder from a Store Api   ######### 
 
 class pul_all_order_of_a_store(APIView):
     def post(self, request):
