@@ -25,7 +25,7 @@ class add_orders_api(APIView):
             return Response({'success':'true',
                                 'error_msg':'',
                                 'errors':{},
-                                'response':{},
+                                'response':'Order save sucessfully',
                                 },status=status.HTTP_202_ACCEPTED)
         else:
             return Response({'success':'false',
@@ -105,7 +105,7 @@ class add_stores_api(APIView):
             return Response({'success':'true',
                                 'error_msg':'',
                                 'errors':{},
-                                'response':{},
+                                'response':'Stores informations save sucessfully',
                                 },status=status.HTTP_202_ACCEPTED)
         else:
             return Response({'success':'false',
@@ -132,7 +132,7 @@ class status_change_api(APIView):
         return Response({'success':'true',
                     'error_msg':'',
                     'errors':{},
-                    'response':serializers.update_orderd_forms(ord).data,
+                    'response':{'Updated Order Status',serializers.update_orderd_forms(ord).data},
                     },status=status.HTTP_202_ACCEPTED)#
 
 ######### Pull all Oreder from a user Api   ######### 
@@ -151,7 +151,7 @@ class pull_all_order_of_a_user(APIView):
             return Response({'success':'true',
                         'error_msg':'',
                         'errors':{},
-                        'response':{'result':serializers.update_orderd_forms(user, many=True).data},
+                        'response':{'User All Orders':serializers.update_orderd_forms(user, many=True).data},
                         },status=status.HTTP_200_OK)
 
         except Exception as e:
@@ -167,15 +167,15 @@ class pul_all_order_of_a_store(APIView):
             print(use_r)
             if use_r==[]:
                 return Response({'success':'false',
-                        'error_msg':"Store_data_id not exist",
+                        'error_msg':"Store_data_id does not exist",
                         'errors':{},
                         'response':{}
                         },status=status.HTTP_400_BAD_REQUEST) 
-            #use_r=use_r[0]
+
             return Response({'success':'true',
                         'error_msg':'',
                         'errors':{},
-                        'response':{'result':serializers.update_orderd_forms(use_r, many=True).data},
+                        'response':{'Store All Orders':serializers.update_orderd_forms(use_r, many=True).data},
                         },status=status.HTTP_200_OK)
 
         except Exception as e:

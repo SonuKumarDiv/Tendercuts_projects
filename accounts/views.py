@@ -61,7 +61,7 @@ class signup__api(APIView):
                 return Response({'success':'True',
                                 'error_msg':'',
                                 'errors':{},
-                                'response':'',
+                                'response':'Registration sucess full',
                                 },status=status.HTTP_200_OK)
             except Exception as e:
                 return Response({'success':'false',
