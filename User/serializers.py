@@ -7,7 +7,7 @@ from accounts import models as ac_models
 class Add_stores_forms(serializers.ModelSerializer):
     class Meta():
         model=models.store_detail
-        fields=('__all__')
+        fields=('store_owner','store_name','store_address')
         
 class get_stores_forms(serializers.ModelSerializer):
     class Meta():

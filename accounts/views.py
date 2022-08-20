@@ -74,3 +74,11 @@ class signup__api(APIView):
                                 'response':{},
                                 },status=status.HTTP_400_BAD_REQUEST)
 
+class get_all_user_api(APIView):
+    def get(self,request):
+        S_T=list(models.User.objects.all())
+        return Response({'success':'true',
+                    'error_msg':'',
+                    'errors':{},
+                    'response':{'Stores_Details':serializers.get_all_users(S_T,many=True).data},
+                    },status=status.HTTP_202_ACCEPTED)# 

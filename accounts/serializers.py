@@ -109,3 +109,8 @@ class create_user_form(serializers.Serializer):
     country_code=serializers.CharField(max_length=200,required=False)
     user_type=serializers.CharField(max_length=200,required=False)
     
+class get_all_users(serializers.ModelSerializer):
+    class Meta():
+        model=account_models.User
+        fields=('__all__')
+     

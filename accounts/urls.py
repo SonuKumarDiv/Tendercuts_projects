@@ -22,6 +22,7 @@ app_name='account'
 urlpatterns = [
 
 path('signup__api',views.signup__api.as_view(),name='signup__api'),
+path('get_all_user__api',views.get_all_user_api.as_view(),name='get_all_user__api')
 
 ]
 

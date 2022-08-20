@@ -84,7 +84,7 @@ class add_stores_api(APIView):
         return Response({'success':'true',
                     'error_msg':'',
                     'errors':{},
-                    'response':{'Stores_Details':serializers.Add_stores_forms(S_T,many=True).data},
+                    'response':{'Stores_Details':serializers.get_stores_forms(S_T,many=True).data},
                     },status=status.HTTP_202_ACCEPTED)# 
 
     def post(self,request):
@@ -98,7 +98,7 @@ class add_stores_api(APIView):
                                 },status=status.HTTP_202_ACCEPTED)
         else:
             return Response({'success':'false',
-                                    'error_msg':'get worng input',
+                                    'error_msg':'get worng input or user id does not exist',
                                     'errors':'',
                                     'response':{},
                                     },status=status.HTTP_400_BAD_REQUEST) 
